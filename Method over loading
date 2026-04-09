@@ -1,0 +1,16 @@
+class Display {
+    // Overload by number of parameters
+    void show(int a) {
+        System.out.println("Integer: " + a);
+    }
+
+    // Overload by data type
+    void show(String b) {
+        System.out.println("String: " + b);
+    }
+
+    // Overload by sequence
+    void show(int a, String b) {
+        System.out.println("Int and String: " + a + ", " + b);
+    }
+}
