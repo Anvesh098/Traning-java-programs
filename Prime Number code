@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class PrimeChecker {
+
+    /**
+     * Determines if a number is prime.
+     * Time Complexity: O(sqrt(n))
+     */
+    public static boolean isPrime(int n) {
+        // Numbers less than or equal to 1 are not prime
+        if (n <= 1) return false;
+        
+        // 2 and 3 are prime
+        if (n <= 3) return true;
+
+        // Eliminate multiples of 2 and 3 quickly
+        if (n % 2 == 0 || n % 3 == 0) return false;
+
+        // Check for divisors from 5 to sqrt(n)
+        // We skip even numbers and multiples of 3 using i += 6
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to check: ");
+        
+        if (scanner.hasNextInt()) {
+            int number = scanner.nextInt();
+            if (isPrime(number)) {
+                System.out.println(number + " is a prime number.");
+            } else {
+                System.out.println(number + " is not a prime number.");
+            }
+        } else {
+            System.out.println("Please enter a valid integer.");
+        }
+        
+        scanner.close();
+    }
+}
